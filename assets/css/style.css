@@ -1,0 +1,94 @@
+:root {
+    --bg: rgb(168, 168, 168);
+    --duration: 1000ms
+}
+
+@keyframes goDown {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(160px);
+    }
+}
+
+@keyframes goUp {
+    from {
+        transform: translateY(160px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+body {
+    background: var(--bg)
+}
+
+header {
+    font-size: 2rem;
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    & button {
+        display: block;
+        width: 100%;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    & div {
+        text-align: center;
+    }
+}
+
+main {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    background: var(--bg);
+
+    & div.casilla {
+        width: 32%;
+        aspect-ratio: 1;
+        border-radius: 10px;
+        background-color: white;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            user-select: none;
+            pointer-events: none;
+
+            &.bg {
+                z-index: 1;
+            }
+
+            &.topo {
+                position: absolute;
+                animation-timing-function: linear;
+                /* animation-duration: var(--duration); */
+                transform: translateY(160px);
+                /* animation-name: goUp; */
+                
+            }
+        }
+    }
+}
