@@ -142,6 +142,7 @@ class App {
         this.rows = 4 // inicial
         this.topos = []
         this.MAX_TOPOS = 15
+        this.MIN_TOPOS = 3
         this.isGameStarted = false
         this.score = 0
         this.time = 0
@@ -198,7 +199,11 @@ class App {
                 if (value > this.MAX_TOPOS) {
                     window.alert("Max rows is 15")
                     value = 15
+                }else if(value < this.MIN_TOPOS){
+                    window.alert("Min rows is 3")
+                    value = 3
                 }
+                this.rowsElement.value = value
                 this._renderGame(value)
             }
         })
@@ -240,6 +245,7 @@ class App {
         this.score = 0
         this.scoreElement.textContent = 0
         this.time = 60
+        this.rowsElement.disabled = true
 
         //set intervals
         this._setGameInterval()
@@ -251,6 +257,7 @@ class App {
         this.isGameStarted = false
         this.mainAudio.pause()
         this.mainAudio.currentTime = 0
+        this.rowsElement.disabled = false
         intervals.forEach(e => clearInterval(e))
     }
 
@@ -267,7 +274,7 @@ class App {
                     pool.push(removedElement)
                 })
             })
-            
+
             speed *= speed > 350 ? 0.95 : 1
         }, speed)
     }
