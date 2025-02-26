@@ -81,11 +81,11 @@ class Topo {
 
         setTimeout(() => {
             this.active = false
+            if (typeof done === "function") {
+                done.call(this)
+            }
         }, speed)
 
-        if (typeof done === "function") {
-            done.call(this)
-        }
         return this
     }
 
@@ -153,6 +153,7 @@ function game() {
 
         const removedElement = pool.splice(rando, 1)[0]
 
+        // Callback hell here!
         removedElement.activar(speed, () => {
             removedElement.desactivar(speed, undefined, () => {
                 pool.push(removedElement)
