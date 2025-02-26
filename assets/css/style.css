@@ -52,7 +52,6 @@ main {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
     justify-content: center;
     background: var(--bg);
 
@@ -67,6 +66,8 @@ main {
         align-items: center;
         position: relative;
         overflow: hidden;
+        box-sizing: border-box;
+        margin: 0.5%;
 
         & img {
             width: 100%;
